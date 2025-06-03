@@ -49,14 +49,13 @@ def generate_schedule_route():
     import time
     try:
         start = time.time()
-        best_schedule = generate_schedule(input_path, int(trimester))
+        best_schedule, fitness_progress = generate_schedule(input_path, int(trimester))
         elapsed = round(time.time() - start, 2)
         excel_out = os.path.join(OUTPUTS_FOLDER, f'timetable_T{trimester}.xlsx')
         json_out = os.path.join(OUTPUTS_FOLDER, f'timetable_T{trimester}.json')
         save_schedule(best_schedule, excel_out, json_out)
         fitness_score = best_schedule.fitness
         conflicts = int(fitness_score // 1000)
-        best_schedule, fitness_progress = generate_schedule(input_path, int(trimester))
         metrics = {
             "fitnessScore": round(10000 / (1 + fitness_score), 2),
             "conflicts": conflicts,
