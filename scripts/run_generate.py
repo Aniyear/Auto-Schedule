@@ -12,9 +12,10 @@ def main():
     output_xlsx = f"outputs/timetable_T{trimester}.xlsx"
     output_json = f"outputs/timetable_T{trimester}.json"
 
-    best_schedule = generate_schedule(input_path, trimester)
+    best_schedule, fitness_progress = generate_schedule(input_path, trimester)
     save_schedule(best_schedule, output_xlsx, output_json)
     print(f"Generated: {output_xlsx}, {output_json}")
+    print(f"Fitness progress: {fitness_progress}")
 
 if __name__ == "__main__":
     main()
