@@ -1,0 +1,927 @@
+body,
+html {
+    background: #fff;
+    color: white;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Overlay */
+.overlay {
+    background: #fff;
+    min-height: 100vh;
+    max-width: 100%;
+}
+
+/* NAVBAR */
+.aitu-navbar {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    border-bottom: 1px solid #000;
+    box-shadow: 0 -1px 14px rgba(255, 255, 255, 0.559);
+    z-index: 100;
+    top: 0;
+    left: 0;
+}
+
+.aitu-navbar-container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Logo/title group */
+.aitu-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-decoration: none;
+}
+
+.aitu-navbar-logo {
+    height: 52px;
+    width: auto;
+    display: block;
+}
+
+.aitu-navbar-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #222;
+    font-style: inherit;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    margin-left: 5px;
+}
+
+/* Menu (desktop default) */
+.aitu-menu-items {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: none;
+}
+
+.aitu-menu-items li {
+    margin: 0;
+    font-size: 1.20rem;
+}
+
+.aitu-navbar a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+
+.aitu-navbar a:hover {
+    color: #117964;
+}
+
+/* Hamburger defaults to hidden */
+#aitu-menu-toggle,
+.aitu-hamburger-lines {
+    display: none;
+}
+
+/* CAROUSEL */
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin-top: 80px;
+    overflow: hidden;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 90vh;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-fixed-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    background: rgba(34, 34, 34, 0.53);
+    padding: 22px 24px 20px 24px;
+    color: #ffc107;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.495);
+    pointer-events: none;
+    letter-spacing: 0.5px;
+}
+
+.carousel-fixed-caption h1 {
+    font-size: 2.5rem;
+    color: #fffbe6;
+    margin-bottom: 9px;
+    text-shadow: 0 3px 18px #000b;
+    font-weight: bold;
+}
+
+.carousel-fixed-caption p {
+    color: #fffbe6;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    text-shadow: 0 3px 16px #000c;
+    font-weight: 400;
+}
+
+/* MAIN LAYOUT */
+.main-content {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-x: hidden;
+    padding: 0;
+}
+
+.main-content-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+    margin: 0px 0;
+    padding: 0;
+    gap: 24px;
+    align-items: stretch;
+    border: 1px solid #e0ede9;
+    border-radius: 0px;
+    background: #fff;
+}
+
+.main-metrics {
+    flex: 1 1 340px;
+    max-width: 420px;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 38px 24px 38px 24px;
+    border-right: 1px dashed #c8c8c8;
+    background: #ffffff;
+    border-radius: 18px 0 0 18px;
+    gap: 24px;
+}
+
+.main-metrics canvas {
+    width: 100%;
+    max-width: 100%;
+    height: 160px;
+    background: #fafbfb;
+    border-radius: 9px;
+    box-shadow: 0 1px 7px #0001;
+    box-shadow: 0 2px 14px #19be9455;
+    margin-right: 0;
+}
+
+.info-box {
+    flex: 2 1 500px;
+    min-width: 0;
+    background: #fff;
+    border-radius: 0 18px 18px 0;
+    padding: 38px 24px 38px 24px;
+    margin: 0;
+    color: black;
+}
+
+.info-box h2 {
+    color: #117964;
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+/* Instructions Card */
+.instructions-card {
+    background: linear-gradient(91deg, #fef9e5 0%, #e6fbee 100%);
+    border-left: 5px solid #117964;
+    border-radius: 13px;
+    padding: 38px 24px 38px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px #1dba9b14;
+    margin-top: 38px;
+    max-width: 100%;
+}
+
+.instructions-title {
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 7px;
+    font-size: 1.13rem;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.instructions-icon {
+    font-size: 2.0em;
+    vertical-align: middle;
+}
+
+.instructions-list {
+    margin: 0;
+    padding-left: 1.3em;
+    color: #223;
+    font-size: 1em;
+    line-height: 1.55;
+}
+
+.instructions-list li {
+    margin-bottom: 2px;
+}
+
+/* CONTROLS FLEX */
+.flex-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 38px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.flex-controls label {
+    margin-top: 3px;
+    font-size: 1.5em;
+    color: #000;
+}
+
+.flex-controls>.col-md-5,
+.flex-controls>.col-md-7 {
+    flex: 1 1 0;
+    min-width: 220px;
+    max-width: 48%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Trimester Radios */
+.trimester-options {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 100%;
+}
+
+.trimester-radio {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+    gap: 5px;
+}
+
+.trimester-radio input[type="radio"] {
+    accent-color: #117964;
+    width: 25px;
+    height: 25px;
+    margin-right: 7px;
+}
+
+.trimester-radio span {
+    color: #000;
+    font-size: 0.8em;
+    margin-bottom: 3px;
+}
+
+/* METRICS PANEL */
+.metrics-panel {
+    width: 100%;
+    margin: 54px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding: 14px 24px 14px 24px;
+    gap: 18px;
+}
+
+.metric-card {
+    padding: 16px 18px 14px 18px;
+    border-radius: 9px;
+    box-shadow: 0 6px 18px #19be9584;
+    background: #fff;
+    transition:
+        box-shadow 0.2s cubic-bezier(.39, .58, .57, 1),
+        transform 0.17s cubic-bezier(.39, .58, .57, 1),
+        border 0.15s;
+    border: 1.5px solid transparent;
+    will-change: transform, box-shadow, border;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px) scale(1.035);
+    box-shadow: 0 12px 32px #19be949c, 0 0px 0px #11796422;
+    border: 1.5px solid #19be94;
+    cursor: pointer;
+    background: linear-gradient(104deg, #f6fefc 70%, #e5fef3 100%);
+}
+
+.metric-label {
+    color: #1a7b65;
+    font-size: 1.01em;
+    font-weight: 500;
+    margin-bottom: 4px;
+    text-align: center;
+    letter-spacing: 0.1px;
+}
+
+.metric-value {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #117964;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 1.05;
+}
+
+.metric-danger {
+    color: #d7263d !important;
+}
+
+/* BUTTONS */
+.btn-warning {
+    background: linear-gradient(90deg, #117964 60%, #19be94 100%);
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 9px;
+    border: none;
+    box-shadow: 0 2px 8px #11796422;
+    letter-spacing: 0.1px;
+    transition: background 0.22s, box-shadow 0.18s, transform 0.12s;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+    background: linear-gradient(90deg, #19be94 20%, #117964 100%);
+    color: #fff !important;
+    box-shadow: 0 4px 18px #11796444;
+    transform: translateY(-2px) scale(1.04);
+}
+
+.btn-danger {
+    background: linear-gradient(92deg, #d7263d 60%, #b1182d 100%);
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 8px #d7263d22;
+    letter-spacing: 0.1px;
+    transition: background 0.21s, box-shadow 0.15s, transform 0.12s;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background: linear-gradient(92deg, #b1182d 40%, #d7263d 100%);
+    color: #fff !important;
+    box-shadow: 0 4px 18px #d7263d44;
+    transform: translateY(-2px) scale(1.04);
+}
+
+/* Download buttons - custom color if needed */
+.btn-success {
+    background: linear-gradient(90deg, #19be94 60%, #117964 100%);
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 9px;
+    border: none;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+    background: linear-gradient(90deg, #117964 20%, #19be94 100%);
+    color: #fff !important;
+}
+
+.btn-info {
+    background: linear-gradient(92deg, #0b96ff 60%, #197be9 100%);
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 9px;
+    border: none;
+}
+
+.btn-info:hover,
+.btn-info:focus {
+    background: linear-gradient(92deg, #197be9 40%, #0b96ff 100%);
+    color: #fff !important;
+}
+
+/* FILE UPLOAD */
+.file-drop-area {
+    position: relative;
+    background: #f2f8f7;
+    border: 2px dashed #117964;
+    border-radius: 9px;
+    text-align: center;
+    padding: 35px 0;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    color: #117964;
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition: border-color 0.22s, background 0.22s;
+    min-height: 70px;
+}
+
+.file-drop-area.dragover {
+    background: #e8fcf5;
+    border-color: #19be94;
+}
+
+.file-drop-message {
+    pointer-events: none;
+}
+
+.file-name-display {
+    margin-top: 5px;
+    font-size: 0.98em;
+    color: #117964;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+.file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-drop-area.file-drop-compact {
+    min-height: 54px;
+    font-size: 1.01em;
+    padding: 14px 0;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.d-flex.gap-2 {
+    gap: 13px;
+}
+
+
+
+/* FOOTER */
+.aitu-footer {
+    width: 100%;
+    background: #fff;
+    color: #222;
+    border-top: 1.5px solid #d7d7d7;
+    padding: 12px 0 10px 0;
+    font-size: 1em;
+    margin-top: 0;
+    text-align: center;
+}
+
+.aitu-footer .footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.aitu-footer-logo {
+    height: 28px;
+    margin-bottom: 6px;
+    margin-right: 3px;
+    filter: drop-shadow(0 0 3px #19be9440);
+}
+
+.footer-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 15px;
+    letter-spacing: 0.2px;
+}
+
+.footer-contacts {
+    display: flex;
+    gap: 18px;
+    font-size: 1em;
+}
+
+.footer-contacts a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.16s;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.footer-contacts a:hover {
+    color: #1dba9b;
+}
+
+.footer-year {
+    font-size: 0.95em;
+    color: #000;
+    margin-top: 4px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    font-style: italic;
+}
+
+
+
+/* RESPONSIVE STYLES */
+@media (max-width: 1100px) {
+    .metrics-panel {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 22px 10vw 13px 10vw;
+    }
+
+    .metric-card {
+        min-width: 120px;
+        font-size: 0.98em;
+        padding: 14px 6px 11px 6px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .metrics-panel {
+        width: 96%;
+        gap: 9px;
+        padding: 12px 4vw 8px 4vw;
+    }
+
+    .flex-controls {
+        gap: 16px;
+    }
+}
+
+@media (max-width: 900px) {
+    .main-content-row {
+        flex-direction: column;
+        max-width: 98vw;
+        gap: 20px;
+    }
+
+    .main-metrics,
+    .info-box {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 14px;
+        padding: 18px 6vw;
+        border: none;
+    }
+
+    .metrics-panel {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 4vw 10px 4vw;
+        border-radius: 9px;
+    }
+
+    .flex-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .col-md-5,
+    .col-md-7 {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .flex-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .flex-controls>.col-md-5,
+    .flex-controls>.col-md-7 {
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .metrics-panel {
+        width: 100%;
+        gap: 6px;
+        padding: 10px 1vw;
+    }
+
+    .metric-card {
+        min-width: 90px;
+        font-size: 0.99em;
+        padding: 11px 4px 6px 4px;
+    }
+
+    .file-drop-compact {
+        min-width: 90vw;
+    }
+
+    .trimester-options {
+        justify-content: center !important;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .carousel-fixed-caption {
+        padding: 10px 4vw;
+    }
+
+    .carousel-fixed-caption h1 {
+        font-size: 1.22rem;
+    }
+
+    .carousel-fixed-caption p {
+        font-size: 0.96rem;
+    }
+
+    .metrics-panel {
+        flex-direction: column;
+        gap: 12px;
+        padding: 13px 5vw;
+        min-height: unset;
+    }
+
+    .metric-card {
+        min-width: 90px;
+        padding: 13px 4px 8px 4px;
+    }
+}
+
+@media (max-width: 920px) {
+    .aitu-navbar-title {
+        font-size: 1.42rem;
+    }
+
+    .aitu-navbar-logo {
+        height: 38px;
+    }
+
+    .aitu-menu-items li {
+        margin-left: 1.1rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .aitu-navbar-container input[type="checkbox"]:checked~.aitu-logo-link {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .aitu-navbar {
+        opacity: 0.97;
+    }
+
+    .aitu-navbar-container input[type="checkbox"],
+    .aitu-navbar-container .aitu-hamburger-lines {
+        display: block;
+    }
+
+    .aitu-navbar-container {
+        max-width: 1200px;
+        width: 95%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 66px;
+        position: relative;
+    }
+
+    .aitu-navbar-container input[type="checkbox"] {
+        position: absolute;
+        height: 36px;
+        width: 32px;
+        top: 20px;
+        left: 20px;
+        z-index: 6;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .aitu-navbar-container .aitu-hamburger-lines {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 28px;
+        width: 34px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 5;
+    }
+
+    .aitu-navbar-container .aitu-hamburger-lines .aitu-line {
+        display: block;
+        height: 4px;
+        width: 100%;
+        border-radius: 8px;
+        background: #117964;
+        transition: all 0.3s;
+    }
+
+    .aitu-navbar-container .aitu-hamburger-lines .aitu-line1 {
+        transform-origin: 0% 0%;
+    }
+
+    .aitu-navbar-container .aitu-hamburger-lines .aitu-line3 {
+        transform-origin: 0% 100%;
+    }
+
+    .aitu-menu-items {
+        padding-top: 80px;
+        background: #fff;
+        height: 100vh;
+        max-width: 320px;
+        transform: translateX(-150%);
+        display: flex;
+        flex-direction: column;
+        margin-left: -40px;
+        padding-left: 40px;
+        transition: transform 0.4s;
+        box-shadow: 6px 0px 16px 0px #aaa;
+        overflow-y: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .aitu-menu-items li {
+        margin-bottom: 1.8rem;
+        font-size: 1.14rem;
+        font-weight: 500;
+    }
+
+    .aitu-logo-link {
+        position: absolute;
+        top: 8px;
+        right: 16px;
+        font-size: 2rem;
+        gap: 8px;
+    }
+
+    .aitu-navbar-container input[type="checkbox"]:checked~.aitu-menu-items {
+        transform: translateX(0);
+    }
+
+    .aitu-navbar-container input[type="checkbox"]:checked~.aitu-hamburger-lines .aitu-line1 {
+        transform: rotate(45deg);
+    }
+
+    .aitu-navbar-container input[type="checkbox"]:checked~.aitu-hamburger-lines .aitu-line2 {
+        transform: scaleY(0);
+    }
+
+    .aitu-navbar-container input[type="checkbox"]:checked~.aitu-hamburger-lines .aitu-line3 {
+        transform: rotate(-45deg);
+    }
+}
+
+@media (max-width: 900px) {
+    .aitu-navbar-container {
+        padding: 0 18px;
+        height: 64px;
+    }
+
+    .aitu-navbar-title {
+        font-size: 1.25rem;
+    }
+
+    .aitu-navbar-logo {
+        height: 38px;
+    }
+
+    .aitu-menu-items {
+        /* Hamburger mode hidden menu */
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 240px;
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        box-shadow: 8px 0 16px #0001;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(.76, 0, .24, 1);
+        padding: 96px 0 0 32px;
+        z-index: 102;
+    }
+
+    .aitu-menu-items li {
+        margin: 0 0 1.8rem 0;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+    /* Hamburger: show lines, show checkbox */
+    #aitu-menu-toggle,
+    .aitu-hamburger-lines {
+        display: block;
+    }
+
+    #aitu-menu-toggle {
+        position: absolute;
+        height: 32px;
+        width: 32px;
+        left: 6px;
+        top: 18px;
+        opacity: 0;
+        z-index: 105;
+        cursor: pointer;
+    }
+
+    .aitu-hamburger-lines {
+        position: absolute;
+        left: 10px;
+        top: 18px;
+        height: 28px;
+        width: 34px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 104;
+        cursor: pointer;
+    }
+
+    .aitu-hamburger-lines .aitu-line {
+        height: 4px;
+        width: 100%;
+        border-radius: 8px;
+        background: #117964;
+        transition: all 0.3s;
+    }
+
+    .aitu-hamburger-lines .aitu-line1 {
+        transform-origin: 0% 0%;
+    }
+
+    .aitu-hamburger-lines .aitu-line3 {
+        transform-origin: 0% 100%;
+    }
+
+    /* Checkbox checked: show menu */
+    #aitu-menu-toggle:checked~.aitu-menu-items {
+        transform: translateX(0);
+    }
+
+    /* Hamburger animation */
+    #aitu-menu-toggle:checked~.aitu-hamburger-lines .aitu-line1 {
+        transform: rotate(45deg);
+    }
+
+    #aitu-menu-toggle:checked~.aitu-hamburger-lines .aitu-line2 {
+        transform: scaleY(0);
+    }
+
+    #aitu-menu-toggle:checked~.aitu-hamburger-lines .aitu-line3 {
+        transform: rotate(-45deg);
+    }
+}

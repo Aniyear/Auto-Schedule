@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University Schedule Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="icon" type="image/x-icon" href="/static/assets/aitu-logo_.png">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="overlay">
+        <!-- Navbar -->
+        <nav class="aitu-navbar">
+            <div class="aitu-navbar-container">
+                <a class="aitu-logo-link" href="/">
+                    <img src="/static/assets/aitu-logo_.png" alt="AITU Logo" class="aitu-navbar-logo" />
+                    <span class="aitu-navbar-title">Astana IT University</span>
+                </a>
+                <input type="checkbox" id="aitu-menu-toggle" />
+                <div class="aitu-hamburger-lines">
+                    <span class="aitu-line aitu-line1"></span>
+                    <span class="aitu-line aitu-line2"></span>
+                    <span class="aitu-line aitu-line3"></span>
+                </div>
+                <ul class="aitu-menu-items">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#main-content" id="generateScheduleLink">Generate Schedule</a></li>
+                    <li><a href="/check">Test Schedule</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!-- Carousel with fixed info overlay -->
+        <div class="carousel-container">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/static/assets/1.jpg" class="d-block w-100" alt="Slide 1" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/assets/2.jpg" class="d-block w-100" alt="Slide 2" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/assets/3.jpg" class="d-block w-100" alt="Slide 3" />
+                    </div>
+                </div>
+                <div class="carousel-fixed-caption">
+                    <h1>Automated Scheduling System</h1>
+                    <p>
+                        A modern tool for creating effective university timetables.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Main Content (Full Width, No Container) -->
+        <div class="main-content" id="main-content">
+            <div class="main-content-row">
+                <div class="main-metrics">
+                    <canvas id="cpuChart"></canvas>
+                    <canvas id="ramChart"></canvas>
+                    <canvas id="memoryChart"></canvas>
+                    <canvas id="fitnessTrendChart"></canvas>
+                </div>
+                <div class="info-box">
+                    <h2 class="text-center mb-4">Schedule Generation</h2>
+
+                    <!-- Info/Instruction Block -->
+                    <div class="instructions-card mb-4">
+                        <div class="instructions-title">
+                            <span class="instructions-icon">ℹ️</span>
+                            How to use this tool ?
+                        </div>
+                        <ul class="instructions-list">
+                            <li>Use the provided template for your GA Input Excel file.</li>
+                            <li>Choose the trimester (current academic year) and upload your dataset to generate a new
+                                schedule.</li>
+                            <li>You can test generated schedules for errors or conflicts.</li>
+                            <li>After processing, you'll be able to download your Excel schedule.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Controls Row (Trimester + Upload + Metrics panel) -->
+                    <div class="row flex-controls mb-3 g-0">
+                        <!-- Trimester Selection (left) -->
+                        <div
+                            class="col-md-5 d-flex flex-column justify-content-center align-items-center align-items-md-start">
+                            <label class="fw-bold form-label mb-2">2024 / Select Trimester</label>
+                            <div class="trimester-options flex-column w-100 gap-1">
+                                <label class="trimester-radio">
+                                    <input type="radio" name="trimester" value="1" checked>
+                                    <span>Trimester 1</span>
+                                </label>
+                                <label class="trimester-radio">
+                                    <input type="radio" name="trimester" value="2">
+                                    <span>Trimester 2</span>
+                                </label>
+                                <label class="trimester-radio">
+                                    <input type="radio" name="trimester" value="3">
+                                    <span>Trimester 3</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Upload Section (right) -->
+                        <div
+                            class="col-md-7 d-flex flex-column justify-content-center align-items-center align-items-md-start">
+                            <label for="datasetUpload" class="fw-bold form-label mb-2">Upload Dataset</label>
+                            <div class="file-drop-area file-drop-compact w-100 mb-2" id="fileDropArea">
+                                <span class="file-drop-message" id="fileDropMsg">
+                                    Drag &amp; drop Excel file<br>or click to select
+                                </span>
+                                <input class="form-control file-input" type="file" id="datasetUpload">
+                            </div>
+                            <div id="fileNameDisplay" class="file-name-display mb-2"></div>
+                            <div class="d-flex flex-row gap-2 w-100">
+                                <button class="btn btn-warning flex-grow-1 action-btn" id="generateBtn">Generate
+                                    Schedule</button>
+                                <a href="/check" class="btn btn-danger flex-grow-1 action-btn" id="validateBtn">Validate
+                                    Schedule</a>
+                            </div>
+
+                            <div id="downloadLinks" class="d-flex flex-row gap-2 w-100"
+                                style="display:none; margin-top: 16px;">
+                                <a id="downloadExcel" class="btn btn-success flex-grow-1 action-btn" href="#" download>
+                                    Download Excel
+                                </a>
+                                <a id="downloadJson" class="btn btn-info flex-grow-1 action-btn" href="#" download>
+                                    Download JSON
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column align-items-center justify-content-center w-100">
+                                <div class="mt-3 text-center">
+                                    <strong><i><span class="text-muted">Supported formats: .xlsx, .xls. After
+                                                processing, an Excel and Json file with the schedule will be
+                                                available for
+                                                download.</span></i>
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-panel">
+                        <div class="metric-card">
+                            <div class="metric-label">Fitness Score</div>
+                            <div class="metric-value" id="fitnessScore">—</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Total Conflicts</div>
+                            <div class="metric-value metric-danger" id="conflictsCount">—</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Hard Constraints</div>
+                            <div class="metric-value" id="hardConstraints">—</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Soft Constraints</div>
+                            <div class="metric-value" id="softConstraints">—</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Generation Time</div>
+                            <div class="metric-value" id="genTime">—</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="aitu-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <img src="https://static.tildacdn.pro/tild3632-6531-4436-a133-333134313137/aitu-logo_.png"
+                        alt="AITU Logo" class="aitu-footer-logo">
+                    <span class="footer-title">Astana IT University</span>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-contacts">
+                        <a href="mailto:221015@astanait.edu.kz" title="Email Rakhim">Rakhim A.</a>
+                        <a href="mailto:221559@astanait.edu.kz" title="Email Aniyar">Aniyar B.</a>
+                        <a href="mailto:221309@astanait.edu.kz" title="Email Almas">Almas M.</a>
+                    </div>
+                    <div class="footer-year">© 2025 - Thesis project</div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="/static/js/main.js"></script>
+
+</body>
+
+</html>
