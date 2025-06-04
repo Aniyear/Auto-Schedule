@@ -1,3 +1,5 @@
+// static/js/main.js
+
 const getSelectedTrimester = () => document.querySelector('input[name="trimester"]:checked').value;
 
 function createChart(id, label, color) {

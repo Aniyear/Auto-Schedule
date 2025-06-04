@@ -5,22 +5,6 @@ from scripts.scheduler import run_scheduler
 from scripts.exporter import export_to_excel, export_to_json
 
 def generate_schedule(input_excel_path, trimester):
-    """Generate a schedule using the genetic algorithm.
-
-    Parameters
-    ----------
-    input_excel_path : str
-        Path to the Excel file used as input for the scheduler.
-    trimester : int
-        Trimester number to generate the schedule for.
-
-    Returns
-    -------
-    tuple
-        ``(best_schedule, fitness_progress)`` where ``best_schedule`` is the
-        best chromosome found and ``fitness_progress`` records the fitness
-        history during evolution.
-    """
     import scripts.config as config
     config.INPUT_FILE = input_excel_path
 

@@ -1,3 +1,4 @@
+// static/js/check.js
 document.addEventListener("DOMContentLoaded", function () {
     function setupDropZone(zoneId, inputId, nameId) {
         const dropZone = document.getElementById(zoneId);
